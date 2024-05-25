@@ -99,16 +99,16 @@ const Admin = () => {
           <Switch>
             <Route path="/" component={HomePage} exact />
             <Route path="/me" component={ProfilePage} exact />
-            <Route path="/content-manager" component={CM} />
+            {/* <Route path="/content-manager" component={CM} /> */}
             {routes}
             <Route path="/settings/:settingId" component={SettingsPage} />
             <Route path="/settings" component={SettingsPage} exact />
-            <Route path="/marketplace">
+            {/* <Route path="/marketplace">
               <MarketplacePage />
             </Route>
             <Route path="/list-plugins" exact>
               <InstalledPluginsPage />
-            </Route>
+            </Route> */}
             <Route path="/404" component={NotFoundPage} />
             <Route path="/500" component={InternalErrorPage} />
             <Route path="" component={NotFoundPage} />

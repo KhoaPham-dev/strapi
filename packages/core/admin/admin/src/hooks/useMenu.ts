@@ -33,24 +33,24 @@ const useMenu = () => {
   const permissions = useSelector(selectAdminPermissions);
   const [menuWithUserPermissions, setMenuWithUserPermissions] = React.useState<Menu>({
     generalSectionLinks: [
-      {
-        icon: Puzzle,
-        intlLabel: {
-          id: 'global.plugins',
-          defaultMessage: 'Plugins',
-        },
-        to: '/list-plugins',
-        permissions: permissions.marketplace?.main ?? [],
-      },
-      {
-        icon: ShoppingCart,
-        intlLabel: {
-          id: 'global.marketplace',
-          defaultMessage: 'Marketplace',
-        },
-        to: '/marketplace',
-        permissions: permissions.marketplace?.main ?? [],
-      },
+      // {
+      //   icon: Puzzle,
+      //   intlLabel: {
+      //     id: 'global.plugins',
+      //     defaultMessage: 'Plugins',
+      //   },
+      //   to: '/list-plugins',
+      //   permissions: permissions.marketplace?.main ?? [],
+      // },
+      // {
+      //   icon: ShoppingCart,
+      //   intlLabel: {
+      //     id: 'global.marketplace',
+      //     defaultMessage: 'Marketplace',
+      //   },
+      //   to: '/marketplace',
+      //   permissions: permissions.marketplace?.main ?? [],
+      // },
       {
         icon: Cog,
         intlLabel: {

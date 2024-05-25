@@ -28,7 +28,7 @@ const LinkUserWrapper = styled(Box)`
   left: ${({ theme }) => theme.spaces[5]};
 `;
 
-const LinkUser = styled(RouterNavLink)<{ logout?: boolean }>`
+const LinkUser = styled(RouterNavLink) <{ logout?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +38,7 @@ const LinkUser = styled(RouterNavLink)<{ logout?: boolean }>`
 
   &:hover {
     background: ${({ theme, logout }) =>
-      logout ? theme.colors.danger100 : theme.colors.primary100};
+    logout ? theme.colors.danger100 : theme.colors.primary100};
     text-decoration: none;
   }
 
@@ -56,7 +56,7 @@ const NavLinkWrapper = styled(Box)`
   }
 `;
 
-interface LeftMenuProps extends Pick<Menu, 'generalSectionLinks' | 'pluginsSectionLinks'> {}
+interface LeftMenuProps extends Pick<Menu, 'generalSectionLinks' | 'pluginsSectionLinks'> { }
 
 const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) => {
   const navUserRef = React.useRef<HTMLDivElement>(null!);
@@ -123,7 +123,7 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
       <Divider />
 
       <NavSections>
-        <NavLink
+        {/* <NavLink
           as={RouterNavLink}
           // @ts-expect-error the props from the passed as prop are not inferred // joined together
           to="/content-manager"
@@ -131,37 +131,38 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
           onClick={() => handleClickOnLink('/content-manager')}
         >
           {formatMessage({ id: 'global.content-manager', defaultMessage: 'Content manager' })}
-        </NavLink>
+        </NavLink> */}
 
         {pluginsSectionLinks.length > 0 ? (
-          <NavSection
-            label={formatMessage({
-              id: 'app.components.LeftMenu.plugins',
-              defaultMessage: 'Plugins',
-            })}
-          >
-            {pluginsSectionLinks.map((link) => {
-              const LinkIcon = link.icon;
-              return (
-                <NavLinkWrapper key={link.to}>
-                  <NavLink
-                    as={RouterNavLink}
-                    to={link.to}
-                    icon={<LinkIcon />}
-                    onClick={() => handleClickOnLink(link.to)}
-                    // @ts-expect-error: badgeContent in the DS accept only strings
-                    badgeContent={
-                      link?.lockIcon ? (
-                        <Icon width={`${15 / 16}rem`} height={`${15 / 16}rem`} as={Lock} />
-                      ) : undefined
-                    }
-                  >
-                    {formatMessage(link.intlLabel)}
-                  </NavLink>
-                </NavLinkWrapper>
-              );
-            })}
-          </NavSection>
+          // <NavSection
+          //   label={formatMessage({
+          //     id: 'app.components.LeftMenu.plugins',
+          //     defaultMessage: 'Plugins',
+          //   })}
+          // >
+
+          // </NavSection>
+          pluginsSectionLinks.map((link) => {
+            const LinkIcon = link.icon;
+            return (
+              <NavLinkWrapper key={link.to}>
+                <NavLink
+                  as={RouterNavLink}
+                  to={link.to}
+                  icon={<LinkIcon />}
+                  onClick={() => handleClickOnLink(link.to)}
+                  // @ts-expect-error: badgeContent in the DS accept only strings
+                  badgeContent={
+                    link?.lockIcon ? (
+                      <Icon width={`${15 / 16}rem`} height={`${15 / 16}rem`} as={Lock} />
+                    ) : undefined
+                  }
+                >
+                  {formatMessage(link.intlLabel)}
+                </NavLink>
+              </NavLinkWrapper>
+            );
+          })
         ) : null}
 
         {generalSectionLinks.length > 0 ? (
@@ -240,13 +241,13 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
         <NavCondense onClick={() => setCondensed((s) => !s)}>
           {condensed
             ? formatMessage({
-                id: 'app.components.LeftMenu.expand',
-                defaultMessage: 'Expand the navbar',
-              })
+              id: 'app.components.LeftMenu.expand',
+              defaultMessage: 'Expand the navbar',
+            })
             : formatMessage({
-                id: 'app.components.LeftMenu.collapse',
-                defaultMessage: 'Collapse the navbar',
-              })}
+              id: 'app.components.LeftMenu.collapse',
+              defaultMessage: 'Collapse the navbar',
+            })}
         </NavCondense>
       </NavFooter>
     </MainNav>

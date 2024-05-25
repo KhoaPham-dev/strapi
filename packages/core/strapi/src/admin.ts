@@ -10,7 +10,7 @@ const render = (mountNode: HTMLElement | null, { plugins, ...restArgs }: RenderA
   return renderAdmin(mountNode, {
     ...restArgs,
     plugins: {
-      'content-type-builder': contentTypeBuilder,
+      // 'content-type-builder': contentTypeBuilder,
       // @ts-expect-error – TODO: fix this
       email,
       upload,
